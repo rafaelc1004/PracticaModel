@@ -1,0 +1,42 @@
+h1{
+    text-align: center;
+    color: blue;
+}
+
+table{
+    align-content: center;
+    border: 1px solid black;
+    text-align: center;
+    color: green;
+}
+
+
+.container {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    width: 100%; /* Ancho completo del contenedor padre */
+}
+
+.content {
+    border-collapse: collapse; /* Para unir los bordes de las celdas */
+}
+
+.content th, .content td {
+    border: 1px solid black; /* Bordes para las celdas */
+    padding: 8px; /* Espaciado interno en las celdas */
+    text-align: center; /* Centra el texto dentro de las celdas */
+}
+
+.content th {
+    border: 3px double black; /* Borde doble en la parte inferior del th */
+}
+
+ul{
+    list-style: none;
+    display: flex; /* Hace que los <li> estén en línea horizontalmente */
+    padding: 10px;
+}
+
+li{
+    margin-left: 20px;
+}

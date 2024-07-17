@@ -1,9 +1,11 @@
-from datetime import date
+from datetime import date, timedelta
 
 from django.forms import ValidationError
 
-def validarFecha(fecha):
+def validarFecha(value):
 
-    fechaLimite = (date.today().year - 18)
-    if (fecha > fechaLimite):
+    fechaLimite = date.today().replace(year=date.today().year - 18)
+    print("mi fecha",fechaLimite)
+    print("mi fecha2",value)
+    if (value > fechaLimite):
         raise ValidationError("Persona es menor de edad!")

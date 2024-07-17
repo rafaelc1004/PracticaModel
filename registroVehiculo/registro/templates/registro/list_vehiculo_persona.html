@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de vehiculos de persona</title>
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+
+<body>
+    <h1>Listado de vehiculos de {{persona.nombre}}</h1>
+    <thead>
+        <nav>
+            <ul>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'formPersona' %}">Formulario Personas</a></li>
+                <li><a href="{% url 'listPersona' %}">Lista Personas</a></li>
+                <li><a href="{% url 'formVehiculo' %}">Formulario Vehiculos</a></li>
+                
+            </ul>
+        </nav>
+    </thead>
+    <div class="container">
+        {% if listaVehiculos %}
+        <table class="content">
+            <thead>
+                <tr>
+                    <th><a href=""></a>Patente</th>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for vehiculo in listaVehiculos %}
+                <tr>
+                    <td>{{vehiculo.patente}}</td>
+                    <td>{{vehiculo.marca}}</td>
+                    <td>{{vehiculo.modelo}}</td>
+                    <td>
+                        <a href="{% url 'updateVehiculo' vehiculo.idVehiculo %}">Editar</a>
+                        <a href="{% url 'delVehiculo' vehiculo.idVehiculo %}">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+
+        <p>No hay vehiculos asociados a {{persona.nombre}}!!</p>
+        {% endif %}
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>formulario Vehiculo</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+</head>
+<body>
+    <h1>{% if form.instance.patente %}Editar{% else %}Agregar{% endif %} Vehiculo</h1></h1>
+
+    <thead>
+        <nav>
+            <ul>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'formPersona' %}">Formulario Personas</a></li>
+                <li><a href="{% url 'listPersona' %}">Lista Personas</a></li>
+                <li><a href="{% url 'formVehiculo' %}">Formulario Vehiculos</a></li>
+                
+            </ul>
+        </nav>
+    </thead>
+    
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <button type="submit" class="btn btn-primary">{% if form.instance.patente %}Actualizar{% else %}Agregar{% endif %}</button>
+
+    </form>
+    
+</body>
+</html>

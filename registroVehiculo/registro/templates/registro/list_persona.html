@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Personas</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+
+<body>
+    <h1>Lista de Personas</h1>
+    <thead>
+        <nav>
+            <ul>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'formPersona' %}">Formulario Personas</a></li>
+                <li><a href="{% url 'listPersona' %}">Lista Personas</a></li>
+                <li><a href="{% url 'formVehiculo' %}">Formulario Vehiculos</a></li>
+                
+            </ul>
+        </nav>
+    </thead>
+    <div class="container">
+        {% if personas %}
+        <table class="content">
+            <thead>
+                <tr>
+                    <th>ver</th>
+                    <th>Rut</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Fecha Nacimiento</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for persona in personas %}
+                <tr>
+                    <td>
+                        <a href="{% url 'listCarPeople' persona.idPersona %}">ir</a>
+                    </td>
+                    <td>{{persona.rut}}</td>
+                    <td>{{persona.nombre}}</td>
+                    <td>{{persona.apellido}}</td>
+                    <td>{{persona.fechaNacimiento}}</td>
+                    <td>
+                        <a href="{% url 'updatePersona' persona.idPersona %}">Editar</a>
+                        <a href="{% url 'delPersona' persona.idPersona %}">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+
+            <p>No hay personas registradas!!</p>
+        {% endif %}
+    </div>
+</body>
+
+</html>

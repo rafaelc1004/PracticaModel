@@ -11,12 +11,22 @@
 
 <body>
 
-    <h1>{% if form.instance.id %}Editar{% else %}Crear{% endif %} Persona</h1>
-
+    <h1>{% if form.instance.nombre %}Editar{% else %}Crear{% endif %} Persona</h1>
+    <thead>
+        <nav>
+            <ul>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'formPersona' %}">Formulario Personas</a></li>
+                <li><a href="{% url 'listPersona' %}">Lista Personas</a></li>
+                <li><a href="{% url 'formVehiculo' %}">Formulario Vehiculos</a></li>
+                
+            </ul>
+        </nav>
+    </thead>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">{% if form.instance.id %}Actualizar{% else %}Crear{% endif %}</button>
+        <button type="submit" class="btn btn-primary">{% if form.instance.nombre %}Actualizar{% else %}Agregar{% endif %}</button>
 
     </form>
 </body>

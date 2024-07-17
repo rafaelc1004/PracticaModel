@@ -9,8 +9,17 @@
 </head>
 <body>
     <h1>Pagina Inicio</h1>
-    
-    <a href="{% url 'formPersona' %}">Ir a formulario</a>
-    
+    <thead>
+        <nav>
+            <ul>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'formPersona' %}">Formulario Personas</a></li>
+                <li><a href="{% url 'listPersona' %}">Lista Personas</a></li>
+                <li><a href="{% url 'formVehiculo' %}">Formulario Vehiculos</a></li>
+                
+            </ul>
+        </nav>
+    </thead>
+
 </body>
 </html>

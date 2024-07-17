@@ -4,14 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Personas</title>
+    <title>Lista de vehiculos de persona</title>
     {% load static %}
+
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 </head>
 
 <body>
-    <h1>Lista de Personas</h1>
+    <h1>Listado de vehiculos de {{persona.nombre}}</h1>
     <thead>
         <nav>
             <ul>
@@ -24,31 +25,25 @@
         </nav>
     </thead>
     <div class="container">
-        {% if personas %}
+        {% if listaVehiculos %}
         <table class="content">
             <thead>
                 <tr>
-                    <th>ver</th>
-                    <th>Rut</th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Fecha Nacimiento</th>
+                    <th><a href=""></a>Patente</th>
+                    <th>Marca</th>
+                    <th>Modelo</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                {% for persona in personas %}
+                {% for vehiculo in listaVehiculos %}
                 <tr>
+                    <td>{{vehiculo.patente}}</td>
+                    <td>{{vehiculo.marca}}</td>
+                    <td>{{vehiculo.modelo}}</td>
                     <td>
-                        <a href="{% url 'listCarPeople' persona.idPersona %}">ir</a>
-                    </td>
-                    <td>{{persona.rut}}</td>
-                    <td>{{persona.nombre}}</td>
-                    <td>{{persona.apellido}}</td>
-                    <td>{{persona.fechaNacimiento}}</td>
-                    <td>
-                        <a href="{% url 'updatePersona' persona.idPersona %}">Editar</a>
-                        <a href="{% url 'delPersona' persona.idPersona %}">Eliminar</a>
+                        <a href="{% url 'updateVehiculo' vehiculo.idVehiculo %}">Editar</a>
+                        <a href="{% url 'delVehiculo' vehiculo.idVehiculo %}">Eliminar</a>
                     </td>
                 </tr>
                 {% endfor %}
@@ -56,7 +51,7 @@
         </table>
         {% else %}
 
-            <p>No hay personas registradas!!</p>
+        <p>No hay vehiculos asociados a {{persona.nombre}}!!</p>
         {% endif %}
     </div>
 </body>

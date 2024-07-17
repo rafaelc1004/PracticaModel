@@ -23,6 +23,7 @@ def formPersona(request, id=None):
             print(form.errors)
     else:
         form = PersonaForm(instance=persona)
+        
     
     return render(request, 'registro/form_persona.html', {'form': form})
 
@@ -45,9 +46,21 @@ def formVehiculo(request, id=None):
             print(form.errors)
     else:
         form = VehiculoForm(instance=vehiculo)
-
         return render(request, 'registro/form_vehiculo.html', {'form':form})
     
 def listVehiculo(request):
     vehiculos = Vehiculo.objects.all()
     return render(request, 'registro/list_vehiculo.html', {'vehiculos':vehiculos})
+
+def delVehiculo(request,id):
+    Vehiculo.objects.filter(idVehiculo=id).delete()
+    return redirect('listVehiculo')
+
+def delPersona(request, id):
+    Persona.objects.filter(idPersona=id).delete()
+    return redirect('listPersona')
+
+def listVehiculoPersona(request, id):
+    listaVehiculos = Vehiculo.objects.all().filter(persona_id = id)
+    persona = Persona.objects.get(idPersona=id)
+    return render(request, 'registro/list_vehiculo_persona.html', {'listaVehiculos': listaVehiculos, 'persona':persona})
